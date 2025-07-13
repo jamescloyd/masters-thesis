@@ -193,7 +193,7 @@ keep if gebjahr >= 1949 & gebjahr <= 1954 & retirement_age >= 60 & retirement_ag
 collapse (firstnm) retirement_age reform dtc reform_dtc gebjahr gebmonat cluster_qob avg_net_income, by(pid)
 
 *Save as a new dataset
-save income_49_54_v4.dta, replace (as robustness check)
+save income_49_54_v4.dta, replace
 *save income_50_53_v4.dta, replace (as robustness check)
 *save income_48_55_v4.dta, replace (as robustness check)
 

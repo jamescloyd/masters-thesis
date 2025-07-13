@@ -473,7 +473,7 @@ mi import flong, id(pid) m(m)
 mi register imputed net_wealth wealth reform_wealth
 mi register regular retirement_age reform dtc reform_dtc cluster_qob gebjahr gebmonat
 
-Summarise the variables
+*Summarise the variables
 mi xeq: summarize gebjahr gebmonat retirement_age reform dtc reform_dtc wealth reform_wealth
 mi xeq: summarize gebjahr gebmonat retirement_age reform dtc reform_dtc wealth reform_wealth if reform == 0
 mi xeq: summarize gebjahr gebmonat retirement_age reform dtc reform_dtc wealth reform_wealth if reform == 1

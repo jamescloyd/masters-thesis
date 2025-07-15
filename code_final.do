@@ -333,7 +333,7 @@ mi estimate, esampvaryok: regress retirement_age reform dtc reform_dtc wealth re
 
 
 
-/* Generate the partner's retirement status dummy variable and do heterogeneity analysis */
+/* Generate the partner's retirement status dummy variable and do heterogeneity analysis*/
 
 *Import partner's pgstib (occupational position) from pgen.dta into master_data_47_56_v4.dta
 use pid syear pgstib using "pgen.dta", clear
@@ -427,14 +427,14 @@ gen reform_income = reform * income
 
 *Summarise the variables
 sum gebjahr gebmonat retirement_age reform dtc reform_dtc income reform_income
-sum gebjahr gebmonat retirement_age reform dtc reform_dtc income reform_income if reform == 0
-sum gebjahr gebmonat retirement_age reform dtc reform_dtc income reform_income if reform == 1
+sum gebjahr gebmonat retirement_age reform dtc reform_dtc income reform_income if income == 0
+sum gebjahr gebmonat retirement_age reform dtc reform_dtc income reform_income if income == 1
 
 
 /* Summary statistics of the wealth heterogeneity sample */
 
 *Load wealth_49_54_v4.dta and rename the net overall wealth variables
-use wealth_49_54_v4.dta, clear
+use "wealth_49_54_v4.dta", clear
 rename (w0111a w0111b w0111c w0111d w0111e) (w0111_1 w0111_2 w0111_3 w0111_4 w0111_5)
 
 *Create the wealth dummy and the reform-wealth interaction term for each imputation
@@ -475,8 +475,8 @@ mi register regular retirement_age reform dtc reform_dtc cluster_qob gebjahr geb
 
 *Summarise the variables
 mi xeq: summarize gebjahr gebmonat retirement_age reform dtc reform_dtc wealth reform_wealth
-mi xeq: summarize gebjahr gebmonat retirement_age reform dtc reform_dtc wealth reform_wealth if reform == 0
-mi xeq: summarize gebjahr gebmonat retirement_age reform dtc reform_dtc wealth reform_wealth if reform == 1
+mi xeq: summarize gebjahr gebmonat retirement_age reform dtc reform_dtc wealth reform_wealth if wealth == 0
+mi xeq: summarize gebjahr gebmonat retirement_age reform dtc reform_dtc wealth reform_wealth if wealth == 1
 
 
 /* Summary statistics of the partner's retirement status heterogeneity sample */
@@ -485,5 +485,5 @@ use "partner_49_54_v4.dta", clear
 
 *Summarise the variables
 summarize gebjahr gebmonat retirement_age reform dtc reform_dtc partner_retired_pre5 reform_partner
-summarize gebjahr gebmonat retirement_age reform dtc reform_dtc partner_retired_pre5 reform_partner if reform == 0
-summarize gebjahr gebmonat retirement_age reform dtc reform_dtc partner_retired_pre5 reform_partner if reform == 1
+summarize gebjahr gebmonat retirement_age reform dtc reform_dtc partner_retired_pre5 reform_partner if partner_retired_pre5 == 0
+summarize gebjahr gebmonat retirement_age reform dtc reform_dtc partner_retired_pre5 reform_partner if partner_retired_pre5 == 1
